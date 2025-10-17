@@ -12,3 +12,6 @@ replit.nix
 .cache
 .upm
 .breakpoints
+
+# Attached assets (not needed in repository)
+attached_assets
