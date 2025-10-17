@@ -1,7 +1,16 @@
 import { JsonRpcProvider } from "ethers";
 import type { Block, Transaction } from "@shared/schema";
 
-const ZAMA_RPC_URL = "https://devnet.zama.ai";
+// Zama Devnet Configuration (v0.5-4)
+// Note: Zama has released v0.7 testnet - consider migration
+const ZAMA_DEVNET_CONFIG = {
+  rpcUrl: "https://devnet.zama.ai",
+  chainId: 9000,
+  gatewayUrl: "https://gateway.devnet.zama.ai",
+  faucetUrl: "https://faucet.zama.ai",
+  explorerUrl: "https://explorer.devnet.zama.ai",
+  currencySymbol: "ZAMA"
+};
 
 let provider: JsonRpcProvider | null = null;
 let providerInitialized = false;
@@ -10,7 +19,7 @@ function getProvider(): JsonRpcProvider {
   if (!provider && !providerInitialized) {
     // Only create provider once to avoid multiple connection attempts
     providerInitialized = true;
-    provider = new JsonRpcProvider(ZAMA_RPC_URL);
+    provider = new JsonRpcProvider(ZAMA_DEVNET_CONFIG.rpcUrl);
   }
   
   if (!provider) {
@@ -126,3 +135,6 @@ export async function getAddressTransactions(
     return [];
   }
 }
+
+// Export config for use in other modules
+export const ZAMA_CONFIG = ZAMA_DEVNET_CONFIG;

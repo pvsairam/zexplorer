@@ -117,11 +117,25 @@ Comprehensive design system documented in `design_guidelines.md`:
 - Component patterns for encrypted data visualization
 - Spacing and layout conventions
 
+## Zama Network Configuration
+
+The explorer is configured for **Zama Devnet (v0.5-4)**:
+
+- **RPC URL**: https://devnet.zama.ai
+- **Chain ID**: 9000
+- **Gateway URL**: https://gateway.devnet.zama.ai (for FHE operations)
+- **Faucet**: https://faucet.zama.ai
+- **Currency**: ZAMA
+- **Official Explorer**: https://explorer.devnet.zama.ai (coming soon)
+
+**Note**: Zama has released v0.7 Confidential Blockchain Protocol Testnet. Consider migration when ready.
+
 ## Known Limitations
 
-1. **RPC Access**: Zama devnet RPC is not accessible from Replit, so the app uses mock data
-2. **JsonRpcProvider Logs**: ethers.js logs connection retry messages - these are informational and don't affect functionality
+1. **RPC Access**: Zama devnet RPC is not accessible from Replit environment, so the app uses mock data for demonstration
+2. **JsonRpcProvider Logs**: ethers.js logs connection retry messages - these are informational and don't affect functionality  
 3. **Historical Data**: Mock system generates limited historical blocks (starts at block 1000)
+4. **Gateway Integration**: FHE Gateway operations not implemented (requires live RPC access)
 
 ## Future Enhancements
 
@@ -135,9 +149,17 @@ When connecting to live Zama fhEVM:
 
 ## Recent Changes
 
+**2025-10-17**:
+- Updated Zama network configuration with official devnet details
+- Added network badge to header showing "Devnet (9000)"
+- Documented complete Zama configuration (RPC, Gateway, Faucet URLs)
+- Exported ZAMA_CONFIG for potential live network integration
+- Added note about v0.7 Confidential Blockchain Protocol Testnet migration
+
 **2025-10-16**: 
-- Implemented WebSocket real-time updates
-- Created `useWebSocket` hook for frontend
+- Implemented WebSocket real-time updates with proper lifecycle management
+- Created `useWebSocket` hook for frontend with cleanup guards
 - Fixed backend to skip RPC polling when using mock data
 - Added cache invalidation on new block events
 - Completed end-to-end testing with Playwright verification
+- Fixed WebSocket reconnection loop on component unmount

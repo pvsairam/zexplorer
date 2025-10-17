@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { SearchBar } from "./search-bar";
 import { ThemeToggle } from "./theme-toggle";
 import { Box } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 export function Header() {
   return (
@@ -12,6 +13,10 @@ export function Header() {
             <Box className="h-6 w-6 text-primary" />
             <span className="font-bold text-lg">Zama Explorer</span>
           </Link>
+          
+          <Badge variant="outline" className="hidden sm:flex text-xs" data-testid="badge-network">
+            Devnet (9000)
+          </Badge>
           
           <div className="flex-1 flex items-center justify-center px-4">
             <SearchBar variant="compact" />
