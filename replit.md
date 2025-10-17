@@ -137,15 +137,31 @@ The explorer is configured for **Zama Devnet (v0.5-4)**:
 3. **Historical Data**: Mock system generates limited historical blocks (starts at block 1000)
 4. **Gateway Integration**: FHE Gateway operations not implemented (requires live RPC access)
 
+## Deployment for Real-Time Data
+
+**Important**: Replit's network environment blocks external blockchain RPCs. To get **real Zama blockchain data**, deploy to:
+
+### Recommended: Railway
+- ✅ Full WebSocket support
+- ✅ No network restrictions
+- ✅ Free tier available
+- ✅ See `DEPLOYMENT.md` for step-by-step guide
+
+### How to Deploy:
+1. Push code to GitHub
+2. Connect to Railway
+3. Set environment variables
+4. Deploy - you'll get real Zama data automatically!
+
+**Full deployment guide**: See `DEPLOYMENT.md`
+
 ## Future Enhancements
 
-When connecting to live Zama fhEVM:
-- Replace mock data with actual RPC calls in `server/blockchain.ts`
-- Set `useMockData = false` in `server/routes.ts`
-- Update `ZAMA_RPC_URL` if devnet URL changes
 - Add pagination for large block/transaction lists
 - Implement advanced search and filtering
 - Add contract verification features
+- Integrate FHE Gateway operations
+- Support for v0.7 Confidential Blockchain Protocol
 
 ## Recent Changes
 
